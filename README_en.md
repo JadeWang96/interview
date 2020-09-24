@@ -771,6 +771,15 @@ Object-oriented programming (OOP) is a model of program programming with object 
 
 Three Object-Oriented Features-Encapsulation, Inheritance, and Polymorphism
 
+### Why Class
+
+Different components could become separate classes which would interact through interfaces. These ready-made components will also be available for use in future applications.
+
+The use of classes makes it easier to maintain the different parts of an application since it is easier to make changes in classes (more on this later).
+
+C++ does not have transparent garbage collection like Java. Hence, in order to efficiently free memory, we must specify our own destructor for a class.
+
+
 ### Encapsulation
 
 Encapsulate objective things into abstract classes, and classes can only use their own data and methods for trusted classes or objects to operate, and hide untrusted information. Keywords: public, protected, private. Do not write defaults to private.
@@ -945,6 +954,27 @@ In fact, vbptr refers to a virtual base table pointer. This pointer points to a 
     * No constructor is defined
     * No in-class initialization
     * No base class, no virtual function
+
+### OOD Interview
+https://www.educative.io/courses/grokking-the-object-oriented-design-interview
+https://www.educative.io/courses/grokking-the-system-design-interview
+
+The process of OO analysis and design can be described as:
+1. Identifying the objects in a system;
+2. Defining relationships between objects;
+3. Establishing the interface of each object; and,
+4. Making a design, which can be converted to executables using OO languages.
+
+Class Diagram -> Attributes and Operations
+
+Interview Steps:
+- Clarify the system requirements (Provide what functions)
+- Find the exact scope of the system
+- Define the actors in the systems (users)
+- Define the use cases
+- Define the main objects in the system
+- Define the actors’ activity
+
 
 ### Memory allocation and management
 
@@ -1821,6 +1851,19 @@ Algorithms | Ideas | Applications
 
 ## 💻 Operating system
 
+### Memory
+
+Physical memory refers to the actual RAM of the system, which usually takes the form of cards (DIMMs) attached to the motherboard. Also called primary memory, it is the only storage type directly accessible to the CPU and holds the instructions of programs to execute.
+
+Virtual memory is a feature of an operating system that enables a computer to be able to compensate for shortages of physical memory by transferring pages of data from random access memory to disk storage. This process is done temporarily and is designed to work as a combination of RAM and space on the hard disk.
+
+Memory leaks occur when new memory is allocated dynamically and never deallocated(lose the access to manage this memeory). The problem with memory leaks is that they accumulate over time and, if left unchecked, may cripple or even crash a program.
+
+Stack represents the static section of the RAM.
+
+Heap is a vast space of memory that is not being managed by the CPU.
+
+
 ### Processes and threads
 
 For threaded systems:
@@ -1881,6 +1924,20 @@ The purpose of communication between threads is mainly for thread synchronizatio
 
 > The communication methods between processes and their advantages and disadvantages come from: [Process thread interview question summary](http://blog.csdn.net/wujiafei_njgcxy/article/details/77098977)
 
+#### Starvation
+
+Starvation or indefinite blocking is phenomenon associated with the Priority scheduling algorithms, in which a process ready to run for CPU can wait indefinitely because of low priority. In heavily loaded computer system, a steady stream of higher-priority processes can prevent a low-priority process from ever getting the CPU.
+
+##### Solution to Starvation : Aging
+
+Aging is a technique of gradually increasing the priority of processes that wait in the system for a long time.
+
+##### Differences between Deadlock and Starvation
+
+1. Deadlock occurs when none of the processes in the set is able to move ahead due to occupancy of the required resources by some other process as shown in the figure below, on the other hand Starvation occurs when a process waits for an indefinite period of time to get the resource it requires.
+2. Other name of deadlock is Circular Waiting. Other name of starvation is Lived lock.
+3. When deadlock occurs no process can make progress, while in starvation apart from the victim process other processes can progress or proceed.
+
 #### Private and shared resources between processes
 
 * Private: address space, heap, global variables, stack, registers
@@ -1920,6 +1977,41 @@ Disadvantages | Creating, destroying, slow switching, large memory and resource 
 * When all meet the needs, use the method you are most familiar with
 
 > The comparison, advantages and disadvantages of multi-process and multi-thread come from: [multi-thread or multi-process selection and difference](https://blog.csdn.net/lishenglong666/article/details/8557215)
+
+##### Race Condition
+
+A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly.
+
+In computer memory or storage, a race condition may occur if commands to read and write a large amount of data are received at almost the same instant, and the machine attempts to overwrite some or all of the old data while that old data is still being read. 
+
+In computing environments, race conditions can be prevented by serialization of memory or storage access. This means if read and write commands are received close together, the read command is executed and completed first by default.
+
+In a network, a race condition may occur if two users attempt to access an available channel at the same instant, and neither computer receives notification the channel is occupied before the system grants access. -> a priority schemed
+
+##### Paging
+
+Paging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. 
+
+This scheme permits the physical address space of a process to be non – contiguous.
+
+##### Demand paging
+
+Demand paging is identical to the paging system with swapping. In demand paging, a page is delivered into the memory on demand i.e., only when a reference is made to a location on that page. 
+
+Demand paging combines the feature of simple paging and implement virtual memory as it has a large virtual memory. Lazy swapper concept is implemented in demand paging in which a page is not swapped into the memory unless it is required.
+
+##### Segmentation
+
+Segmentation is the arrangement of memory management. 
+
+According to the segmentation the logical address space is a collection of segments. Each segment has a name and length. Each logical address have two quantities segment name and the segment offset, for simplicity we use the segment number in place of segment name.
+
+##### Thrashing  
+
+Thrashing occurs when a computer's virtual memory resources are overused, leading to a constant state of paging and page faults, inhibiting most application-level processing.
+
+This causes the performance of the computer to degrade or collapse. The situation can continue indefinitely until either the user closes some running applications or the active processes free up additional virtual memory resources.
+
 
 ### Linux kernel synchronization
 
@@ -2452,6 +2544,13 @@ Status Code
 
 >More status codes: [Rookie Tutorials. HTTP Status Codes](http://www.runoob.com/http/http-status-codes.html)
 
+##### HTTPS
+
+HTTPS is HTTP with encryption. 
+- HTTPS uses TLS (SSL) to encrypt normal HTTP requests and responses. (SSL stands for Secure Sockets Layer, TLS (Transport Layer Security) is just an updated, more secure, version of SSL)
+- HTTP Works at Application Layer and HTTPS works at Transport Layer.
+- Using different port for communication
+
 ##### Other agreements
 
 * SMTP (Simple Main Transfer Protocol, Simple Mail Transfer Protocol) is a standard for transmitting Email over the Internet. It is a relatively simple text-based protocol. One or more recipients of a message are specified on top of it (confirmed to exist in most cases), and the message text is transmitted. You can easily test an SMTP server through a Telnet program. SMTP uses TCP port 25.
@@ -2459,6 +2558,24 @@ Status Code
     * For internal network or network service provider to automatically assign IP addresses to users
     * For internal network administrators as a means of central management of all computers
 * SNMP (Simple Network Management Protocol) forms part of the Internet protocol family defined by the Internet Engineering Task Force (IETF). The protocol can support a network management system to monitor whether the devices connected to the network have any management concerns.
+
+##### When you type a URL and press enter, what is the process behind the page loading?
+
+1. Type an URL into address bar in browser.
+2. The browser parses the URL to find the protocol, host, port, and path and forms a HTTP request.
+3. To reach the host, it does a DNS lookup on the host
+4. Then a socket needs to be opened from the user's computer to that IP number, on the port specified (most often port 80)
+When a connection is open, the HTTP request is sent to the host
+5. The host forwards the request to the server software (most often Apache) configured to listen on the specified port
+6. The server inspects the request, and launches the server plugin needed to handle the request
+7. The plugin gets access to the full request, and starts to prepare a HTTP response.
+8. To construct the response a database is accessed. A database search is made, based on parameters in the path (or data) of the request
+9. The plugin combines that data with some meta data (in the form of HTTP headers), and sends the HTTP response back to the browser.
+10. The browser receives the response, and parses the HTML in the response
+11. A DOM tree is built out of the broken HTML
+12. Javascript is parsed and executed, and DOM nodes are moved and style information is updated accordingly
+13. The browser renders the page on the screen according to the DOM tree and the style information for each node
+14. You see the page on the screen
 
 <a id="network-programming"></a>
 
